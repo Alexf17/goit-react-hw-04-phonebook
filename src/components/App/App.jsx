@@ -5,6 +5,7 @@ import { ContactsList } from '../ContactList/ContactList';
 import { getLocalStorage, setLocalStorage } from 'constans/localStorage';
 import { Filter } from '../Filter/Filter';
 import { phoneBook } from 'constans/contactsBase';
+import { renderFilteredContact } from './helpers';
 import { Wrap, TitleBook, ContactTitle, ContactWrap } from './App.styled';
 
 export const App = () => {
@@ -39,13 +40,8 @@ export const App = () => {
     setFilter(value);
   };
 
-  const renderFilteredContact = () => {
-    const normalizedValue = filter.toLowerCase();
-    const filteredContacts = contacts.filter(contact =>
-      contact.name.toLowerCase().includes(normalizedValue)
-    );
-    return filteredContacts;
-  };
+
+  const filteredContacts = renderFilteredContact(contacts, filter)
 
   useEffect(() => {
     setLocalStorage('contacts', contacts);
@@ -60,7 +56,7 @@ export const App = () => {
         <ContactWrap>
           <Filter value={filter} onChange={changeFilter} />
           <ContactsList
-            contacts={renderFilteredContact}
+            contacts={filteredContacts}
             onDelete={deleteContact}
           />
         </ContactWrap>
