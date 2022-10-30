@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import { nanoid } from 'nanoid';
 import ContactForm from '../ContactForm/ContactForm';
 import { ContactsList } from '../ContactList/ContactList';
-import { getLocalStorage, setLocalStorage } from 'constans/localStorage';
+import { getLocalStorage, setLocalStorage } from 'constants/localStorage';
 import { Filter } from '../Filter/Filter';
-import { phoneBook } from 'constans/contactsBase';
+import { phoneBook } from 'constants/contactsBase';
 import { renderFilteredContact } from './helpers';
 import { Wrap, TitleBook, ContactTitle, ContactWrap } from './App.styled';
 
